@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import { Home } from './components/home';
+import { Searchbar } from './components/search';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/search" element={<Searchbar/>} />
            
         </Routes>
         </div>

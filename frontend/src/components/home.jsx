@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useEffect,useState } from "react"
+import { Searchbar } from "./search";
+import { Link } from "react-router-dom";
 
 export const Home=()=>{
 
@@ -19,13 +21,21 @@ export const Home=()=>{
     },[])
 
     const [db,setdb]=useState([])
-
+    const [fil,setfil]=useState([])
 
    
 
 
 
   return (
+    <>
+
+      <Link  to={"/search"}>
+        <h2>Search</h2>
+        </Link>
+    
+    
+  
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -37,7 +47,22 @@ export const Home=()=>{
             <TableCell align="right"><button onClick={(()=>{
           return (setdb([...db.sort((a,b)=>a.residents-b.residents)]))
         })}>Ascending</button></TableCell>
-         <TableCell align="right"></TableCell>
+
+{/* filter */}
+
+        
+      
+<TableCell align="right"><button onClick={(()=>{
+   axios.get("https://fullst.herokuapp.com/product").then((res)=>{
+    return (setdb([...res.data.filter((el)=>el.flat==="owner")]))
+   
+})})}>owner</button></TableCell>
+
+
+
+
+{/* filter */}
+
             <TableCell align="right"><button  onClick={(()=>{
           return (setdb([...db.sort((a,b)=>a.block-b.block)]))
         })}>Ascending</button></TableCell>
@@ -51,9 +76,11 @@ export const Home=()=>{
             <TableCell align="right"><button  onClick={(()=>{
           return (setdb([...db.sort((a,b)=>b.residents-a.residents)]))
         })} >decending</button></TableCell>
-            <TableCell align="right"><button  onClick={(()=>{
-          return (setdb([...db.sort((a,b)=>b.flat-a.flat)]))
-        })} >decending</button></TableCell>
+         <TableCell align="right"><button onClick={(()=>{
+   axios.get("https://fullst.herokuapp.com/product").then((res)=>{
+    return (setdb([...res.data.filter((el)=>el.flat==="rental")]))
+   
+})})}>rental</button></TableCell>
             <TableCell align="right"><button  onClick={(()=>{
           return (setdb([...db.sort((a,b)=>b.block-a.block)]))
         })} >decending</button></TableCell>
@@ -63,7 +90,7 @@ export const Home=()=>{
             <TableCell align="right">regional Number</TableCell>
             <TableCell align="right">distance from office</TableCell>
             <TableCell align="right">type</TableCell>
-            <TableCell align="right">owener name</TableCell>
+            <TableCell align="right">block name</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -83,7 +110,7 @@ export const Home=()=>{
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+    </TableContainer></>
   );
 }
 
