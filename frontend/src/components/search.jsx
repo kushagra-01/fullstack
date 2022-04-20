@@ -30,7 +30,7 @@ export const Searchbar =()=>{
   
 
     const handleSearch=(e)=>{
-        console.log(e)
+      
         const filteredContacts = e.length === 0 ? data : 
         data.filter(contact => contact.block.toLowerCase().includes(e.toLowerCase()))
 
@@ -39,7 +39,7 @@ export const Searchbar =()=>{
     }
     const getData =()=>{
         axios.get("https://fullst.herokuapp.com/product").then(({data})=>{
-            console.log(data,"kushagra")
+            
             setdata(data)
             setloading(true);
         }).catch((err) => {
@@ -53,6 +53,19 @@ export const Searchbar =()=>{
     return (
 
         <>
+        <div>
+          <Link  to={"/search"}>
+        <h2>Search</h2>
+        </Link>
+        <Link  to={"/login"}>
+        <h2>login</h2>
+        </Link>
+        <Link  to={"/signup"}>
+        <h2>register</h2>
+        </Link>
+        <Link  to={"/home"}>
+        <h2>home</h2>
+        </Link></div>
         <div id='baseinp' style={{boxShadow:focused?'inset 0 -2px 0 black':"",
         position:'relative', transition:'all 0.5s',textAlign:"center"
     }}>

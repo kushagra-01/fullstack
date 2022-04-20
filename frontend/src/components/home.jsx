@@ -33,7 +33,15 @@ export const Home=()=>{
       <Link  to={"/search"}>
         <h2>Search</h2>
         </Link>
-    
+        <Link  to={"/login"}>
+        <h2>login</h2>
+        </Link>
+        <Link  to={"/signup"}>
+        <h2>register</h2>
+        </Link>
+        <Link  to={"/home"}>
+        <h2>home</h2>
+        </Link>
     
   
     <TableContainer component={Paper}>
