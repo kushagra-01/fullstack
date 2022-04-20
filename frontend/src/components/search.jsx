@@ -52,20 +52,25 @@ export const Searchbar =()=>{
 
     return (
 
-        <>
-        <div>
-          <Link  to={"/search"}>
-        <h2>Search</h2>
-        </Link>
-        <Link  to={"/login"}>
-        <h2>login</h2>
-        </Link>
-        <Link  to={"/signup"}>
-        <h2>register</h2>
-        </Link>
-        <Link  to={"/home"}>
-        <h2>home</h2>
-        </Link></div>
+        <>    <TableRow>
+        <TableCell>.</TableCell>
+        <TableCell align="right"><Link  to={"/search"}>
+    <h2>Search</h2>
+    </Link></TableCell>
+        <TableCell align="right">
+    <Link  to={"/login"}>
+    <h2>login</h2>
+    </Link></TableCell>
+        <TableCell align="right"> 
+    <Link  to={"/signup"}>
+    <h2>register</h2>
+    </Link></TableCell>
+        <TableCell align="right">
+    <Link  to={"/home"}>
+    <h2>home</h2>
+    </Link></TableCell>
+      </TableRow>
+       
         <div id='baseinp' style={{boxShadow:focused?'inset 0 -2px 0 black':"",
         position:'relative', transition:'all 0.5s',textAlign:"center"
     }}>
@@ -76,8 +81,11 @@ export const Searchbar =()=>{
         })}/>
     </div>
     <TableContainer component={Paper}>
+      
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        
         <TableHead>
+          
           <TableRow>
           <TableCell></TableCell>
             <TableCell align="right"><button onClick={(()=>{
